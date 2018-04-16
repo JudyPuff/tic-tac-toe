@@ -32,7 +32,7 @@ function Square(props) {
     handleClick(i) {
       const squares =
       this.state.squares.slice()
-        if (calculateWinner(squres) || squares[i]) {
+        if (calculateWinner(squares) || squares[i]) {
           return
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O'
@@ -115,8 +115,8 @@ function calculateWinner(squares) {
   ]
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i]
-    if (squres[a] && squres[a] === squres[b] && squres[c]) {
-      return squres[a]
+    if (squares[a] && squares[a] === squares[b] && squares[c]) {
+      return squares[a]
     }
   }
   return null
