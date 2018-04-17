@@ -21,13 +21,13 @@ function Square(props) {
 // NB: onClick={props.onClick()} would not work b/c it'd call props.onClick immediatly instead of passing it down!!
   
   class Board extends React.Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        squares: Array(9).fill(null),
-        xIsNext:true,
-      }
-    }
+    // constructor(props) {
+    //   super(props)
+    //   this.state = {
+    //     squares: Array(9).fill(null),
+    //     xIsNext:true,
+    //   }
+    // }
 
     handleClick(i) {
       const squares =
@@ -42,11 +42,15 @@ function Square(props) {
     }
 
     renderSquare(i) {
-      return ( // putting a ( to stop auto insertion of ; after return
-      <Square // passing 2 props from Board to Square: value and onClick (see below)
-      value={this.state.squares[i]} 
-      onClick={() => this.handleClick(i)}
+      return ( 
+        // putting a ( to stop auto insertion of ; after return
+      <Square 
+        value={this.props.squares[i]} 
+        onClick={() => this.props.onClick(i)}
       />
+      // passing 2 props from Board to Square: value and onClick (see below)
+      // onClick={() => this.handleClick(i)} <-- need to have props if passing props down
+      // value={this.state.squares[i]} <-- don't need this any more if passing squares via props (when you get rid of constructor)
       );
     }
   
